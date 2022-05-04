@@ -1,16 +1,27 @@
-import './Expensesitem.css'
+import ExpenseDate from "./ExpenseDate";
+import "./ExpensesItem.css";
+import Card from "./Card";
 
-const Expensesitem = (props) => {
+const ExpensesItem = (props) => {
+  const { date, title, price } = props;
 
-    return(
-        <div className="expense-item">
-            <div>{props.date}</div>
-            <div className="expense-item__description">
-                <h1>{props.title}</h1>
-                <div className="expense-item__price">{props.price}</div>
-            </div>
-        </div>
-    );
+  let title2 = props.title;
+
+  const changeTitle = () => {
+    title2 = "Изменили!!!";
+    console.log(title2);
+  };
+
+  return (
+    <Card className="expense-item">
+      <ExpenseDate date={date} />
+      <div className="expense-item__description">
+        <h1>{title2}</h1>{" "}
+      </div>
+      <div className="expense-item__price">${price}</div>
+      <button onClick={changeTitle}>Change name</button>
+    </Card>
+  );
 };
 
-export default Expensesitem;
+export default ExpensesItem;
